@@ -20,7 +20,7 @@ public class Post {
     private String content;
 
     @NotNull
-    private Date postedDate;
+    private String postedDate;
 
     @NotNull
     @Size(min=4, max=20)
@@ -44,11 +44,11 @@ public class Post {
         this.content = content;
     }
 
-    public Date getPostedDate() {
+    public String getPostedDate() {
         return postedDate;
     }
 
-    public void setPostedDate(Date postedDate) {
+    public void setPostedDate(String postedDate) {
         this.postedDate = postedDate;
     }
 

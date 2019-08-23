@@ -19,10 +19,10 @@ public class HomeController {
     @Autowired
     CloudinaryConfig cloudc;
 
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
-    }
+//    @RequestMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
 
     @RequestMapping("/")
     public String listPosts(Model model) {
@@ -31,7 +31,7 @@ public class HomeController {
     }
 
     @GetMapping("/add")
-    public String postForm(Model model) {
+    public String newPost(Model model) {
         model.addAttribute("post", new Post());
         return "postform";
     }
@@ -56,7 +56,16 @@ public class HomeController {
         model.addAttribute("post", postRepository.findById(id).get());
         return "show";
     }
-
+    @RequestMapping("update/{id}")
+    public String updatePost(@PathVariable("id") long id, Model model){
+        model.addAttribute("post", postRepository.findById(id).get());
+        return "postform";
+    }
+    @RequestMapping("delete/{id}")
+    public String delPost(@PathVariable("id") long id){
+        postRepository.deleteById(id);
+        return "redirect:/";
+    }
 }
 
 

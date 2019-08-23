@@ -20,7 +20,14 @@
             </p>
         </div>
         <div th:replace="base :: header"></div>
-
+<!--            <div class="row">-->
+<!--                <div class="col-md-6">Message</div>-->
+<!--                <div class="col-md-3">Sent By</div>-->
+<!--                <div class="col-md-3">Posted On</div>-->
+<!--            </div>-->
+<!--        <div class="row">-->
+<!--            -->
+<!--        </div>-->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -31,18 +38,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="post : ${post}">
-                    <tr>
-                        <td th:inline="text">[[${post.content}]]</td>
-                        <td th:inline="text">[[${post.postedDate}]]</td>
-                        <td th:inline="text">[[${post.sentBy}]]</td>
+                    <tr th:each="post : ${posts}">
+                        <td th:text="${post.content}"></td>
+                        <td th:text="${post.postedDate}"></td>
+                        <td th:text="${post.sentBy}"></td>
+                        <td th:if="${post.image} !=null">
+                            <img th:src="${post.image}" class="img-thumbnail"/></td>
                         <td>
                             <a th:href="@{/detail/{id}(id=${post.id})}">Detail</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        <br />
+        <br />
+        <hr />
+        <div th:replace="base :: footer"></div>
     </div>
-    <div th:replace="base :: footer"></div>
 </body>
 </html>

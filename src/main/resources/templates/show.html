@@ -13,11 +13,13 @@
 <body>
     <div class="container">
         <div th:replace="base :: header"></div>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem">
                 <img class="card-img-top" th:src="${post.image}" alt="Card image cap" />
                 <div class="card-body">
                     <h5 class="card-title" th:th:inline="text">[[${post.content}]]</h5>
                     <p class="card-text" th:inline="text">This was posted on [[${post.postedDate}]] by [[${post.sentBy}]]</p>
+                    <a th:href="@{/update/{id}(id=${post.id})}" class="card-link">Update Message</a>
+                    <a th:href="@{/delete/{id}(id=${post.id})}" class="card-link">Delete Message</a>
                 </div>
         </div>
         <br />

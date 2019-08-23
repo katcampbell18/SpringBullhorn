@@ -18,18 +18,22 @@
         <div th:replace="base :: header"></div>
         <form method="POST" action="/add" th:object="${post}" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="name">Message</label>
-                <textarea rows="4" cols="50" class="form-control" th:field="*{content}" />
+                <label name="message">Message</label>
+                <textarea rows="4" cols="50" class="form-control" th:field="*{content}"></textarea>
             </div>
             <div class="form-group">
-                <label for="species">Sent By</label>
+                <label name="sentby">Sent By</label>
                 <input type="text" class="form-control" th:field="*{sentBy}" />
             </div>
             <div class="form-group">
-                <label for="image">Upload Image</label>
-                <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                <label name="date"> Posted Date</label>
+                <input type="date" class="form-control" th:field="*{postedDate}" />
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label name="image">Upload Image</label>
+                <input type="file" name="file"/>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit" />
         </form>
         <br />
         <br />
